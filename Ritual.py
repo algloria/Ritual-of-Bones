@@ -102,3 +102,4 @@ while True:
         useditem=input()
         inventory.remove('useditem')
 
+print("poop")
