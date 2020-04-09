@@ -6,6 +6,7 @@ import random
 
 damage=[1,2,3,4,5,6]
 inventory=[]
+freerolls=int()
 
 print("Welcome to Ritual of Bones\n")
 print("A card game about surviving in the wilderness and pleasing the spirts of otherly realms")
@@ -34,7 +35,7 @@ while True:
             print(f"its a {animal.name}!")
             while animal.health > 0:
                 attack=random.choice(damage)
-                choice=input("Attack or Run Away? ")
+                choice=input("Attack or Run Away?")
                 if choice== "Attack"or choice=="attack":
                     animal.health-=attack
                     animal.paces-= 1
@@ -45,6 +46,7 @@ while True:
                         Spirit-=animalattack
                         print(f"The {animal.name} has attacked you for {animalattack}\n")
                         print(f"Your health is now {Spirit}.")
+        
                     if animal.health <=0:
                     		print(f"the {animal.name} has been slayed!\n")
                     		break
@@ -55,15 +57,22 @@ while True:
                         print("Game Over")
                         input()
                         exit()
-                elif choice=="Run away" or choice=="run away":
+                elif choice== "Run away" or choice== "run away" or choice=="run":
                  	print(f"You manage to sneak past the {animal.name}\n")
-                 	break
+                    
+                    
+
         if roll_1 == "Consumable" or roll_2 == "Consumable":
             item=random.choice(consumable.weapon_list or consumable.consumable_list)
+            treasure=random.choice(consumable.treasure_list)
             choice=input(f"Would you like to craft an {item.name} or go adventuring? Craft or Venture. ")
-            if choice=="Craft" or "craft":
+            if choice=="Craft" or choice== "craft":
                 inventory.append(item)
                 print(f"You have crafted a {item.name} and stored it in your inventory.")
+            elif choice=="venture" or choice== "Venture":
+                inventory.append(treasure)
+                print(f"While you venture throughout the wilderness you stumble upon {treasure.name}! you store your findings in your inventory.")
+                
                         
             
             
@@ -80,8 +89,16 @@ while True:
             freedice.free_dice()
     
     elif choice =="inventory" or choice=="Inventory":
-        print(inventory)
+        for item in inventory:
+            print(item.name)
     
     elif choice =="health" or choice== "health":
         print(Spirit)
     
+    elif choice == "equip item" or choice=="use item":
+        for item in inventory:
+            print(item.name)
+        print("What item would you like to use? ")
+        useditem=input()
+        inventory.remove('useditem')
+
