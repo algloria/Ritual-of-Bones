@@ -57,10 +57,9 @@ while True:
                         print("Game Over")
                         input()
                         exit()
-                elif choice== "Run away" or choice== "run away" or choice=="run":
-                 	print(f"You manage to sneak past the {animal.name}\n")
-                    
-                    
+                elif choice == "Run away" or choice == "run away" or choice=="run":
+                    print(f"You manage to sneak past the {animal.name}\n")
+                    break
 
         if roll_1 == "Consumable" or roll_2 == "Consumable":
             item=random.choice(consumable.weapon_list or consumable.consumable_list)
@@ -72,14 +71,6 @@ while True:
             elif choice=="venture" or choice== "Venture":
                 inventory.append(treasure)
                 print(f"While you venture throughout the wilderness you stumble upon {treasure.name}! you store your findings in your inventory.")
-                
-                        
-            
-            
-            
-
-
-
 
     elif choice=="N"or choice=="n":
         choice=input("Would you like to roll a free die? Y/N? ")
@@ -97,9 +88,7 @@ while True:
     
     elif choice == "equip item" or choice=="use item":
         for item in inventory:
-            print(item.name)
-        print("What item would you like to use? ")
-        useditem=input()
-        inventory.remove('useditem')
-
-print("poop")
+            print(f"{inventory.index(item)}: {item.name}")
+        item_choice = int(input("Which item would you like to use? "))
+        inventory.pop(item_choice)
+        print(inventory)
