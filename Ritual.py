@@ -49,12 +49,12 @@ while True:
                         print(f"Your health is now {Spirit}.")
         
                     if animal.health <=0:
-                    		print(f"the {animal.name} has been slayed!\n")
-                            del damage[weapondamage]
-                            break
+                       print(f"the {animal.name} has been slayed!\n")
+                       del damage[weapondamage]
+                       break
                     if animal.paces == 0:
-                    		print(f"the {animal.name} ran away!!...\n")
-                    		break
+                       print(f"the {animal.name} ran away!!...\n")
+                       break
                     if Spirit <= 0:
                         print("Game Over")
                         input()
