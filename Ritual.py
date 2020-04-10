@@ -5,6 +5,7 @@ import consumable
 import random
 
 damage=[1,2,3,4,5,6]
+itemdamage=[]
 inventory=[]
 freerolls=int()
 
@@ -49,7 +50,8 @@ while True:
         
                     if animal.health <=0:
                     		print(f"the {animal.name} has been slayed!\n")
-                    		break
+                            del damage[weapondamage]
+                            break
                     if animal.paces == 0:
                     		print(f"the {animal.name} ran away!!...\n")
                     		break
@@ -89,6 +91,13 @@ while True:
     elif choice == "equip item" or choice=="use item":
         for item in inventory:
             print(f"{inventory.index(item)}: {item.name}")
-        item_choice = int(input("Which item would you like to use? "))
-        inventory.pop(item_choice)
-        print(inventory)
+        item_choice = int(input("Which item would you like to use? ")) #removed int
+        itemchoice=inventory.pop(item_choice) #changed inventory.pop to inventory.remove
+        print(f"you have equiped/used {itemchoice.name}.")
+        itemdamage.append(itemchoice.damage)
+        weapondamage=list(range(1, itemchoice.damage))
+        damage.extend(weapondamage)
+        print(damage)
+        
+        
+        

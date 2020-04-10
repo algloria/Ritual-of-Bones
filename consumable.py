@@ -21,7 +21,7 @@ weapon_list.append(Consumable("Bow and Arrow", 20, 0, 0))
 weapon_list.append(Consumable("Iron Spear", 30, 0, 0))
 weapon_list.append(Consumable("Iron Battle Axe", 40, 0, 0))
 weapon_list.append(Consumable("Throwing Axe", 15, 0, 0))
-weapon_list.append(Consumable("Stone Knife", 15, 0, 0))
+weapon_list.append(Consumable("Stone Knife",15, 0, 0))
 weapon_list.append(Consumable("Stone Hatchet", 20, 0, 0))
 weapon_list.append(Consumable("Cursed Sacrifical Dagger", 50, 0, 0))
 
