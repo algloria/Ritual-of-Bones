@@ -12,6 +12,7 @@ material=[]
 
 consumable.weapon_list
 consumable.consumable_list
+consumable.treasure_list
 
 print("Welcome to Ritual of Bones\n")
 print("A card game about surviving in the wilderness and pleasing the spirts of otherly realms")
@@ -30,17 +31,17 @@ elif choice=="Survivalist":
 
 
 while True:
-    choice=input("Options: Roll the Bones? (Y/N), Craft Items (Craft), View Other Options(Other) ")
+    choice=input("Roll the Bones? (Y/N), (Craft Weapon), (Craft Consumable), View Other Options(Other) ")
     if choice== "Y"or choice =="y":
-        roll_1, roll_2 = Dice.roll()
+        roll_1 = Dice.roll()
 
-        if roll_1 =="Animal Encounter" or roll_2=="Animal Encounter":
+        if roll_1 =="Animal Encounter":
             print("You spot an animal....")
             animal = random.choice(animalcards.animal_list)
             print(f"its a {animal.name}!")
             while animal.health > 0:
                 attack=random.choice(damage)
-                choice=input("Attack or Run Away?")
+                choice=input("Attack or Run Away? ")
                 if choice== "Attack"or choice=="attack":
                     animal.health-=attack
                     animal.paces-= 1
@@ -69,8 +70,7 @@ while True:
                     print(f"You manage to sneak past the {animal.name}\n")
                     break
 
-        if roll_1 == "Consumable" or roll_2 == "Consumable":
-            item=random.choice(consumable.consumable_list)
+        if roll_1 == "Consumable":
             treasure=random.choice(consumable.treasure_list)
             choice=input(f"Would you like to go adventuring or rest? Venture/Rest. ")
             if choice=="venture" or choice== "Venture":
@@ -93,24 +93,29 @@ while True:
     elif choice =="inventory" or choice=="Inventory":
         for item in inventory:
             print(item.name)
+            
 
     elif choice =="Materials" or choice=="materials":
             print(sum(material))
+            
 
     
     elif choice =="health" or choice== "health":
         print(Spirit)
+        
 
     elif choice =="Crafting Menu" or choice == "crafting menu":
         for consumable in consumable.consumable_list:
             print(f"{consumable.name} = {consumable.cm} crafting mat.")
+            
 
     elif choice =="Weapon Menu" or choice == "weapon menu":
         for weapon in consumable.weapon_list:
             print(f"{weapon.name} = {weapon.cm} crafting mat.")
+            
 
-    elif choice =="craft" or choice =="craft":
-        choice=input("Which weapon would you like to craft? ")
+    elif choice =="craft weapon" or choice =="Craft Weapon":
+        choice=input("What would you like to craft? ")
         for weapon in consumable.weapon_list:
             if choice == (f"{weapon.name}"):
                 x = sum(material)-weapon.cm
@@ -120,6 +125,16 @@ while True:
                 if x <=0:
                     print("You do not have enough materials to make that item")
 
+    elif choice =="Craft Consumable" or choice =="craft consumable":
+        choice=input("what consumable would you like to craft? ")
+        for consumable in consumable.consumable_list:
+            if choice ==(f"{consumable.name}"):
+                y = sum(material)-consumable.cm
+                if y >=0:
+                    inventory.append(consumable)
+                    print(f"you have crafted {consumable.name}")
+                if y <=0:
+                    print("you do not have enough materials to make that item")
     elif choice =="other" or choice =="Other":
         print("View Inventory(Inventory), View Health(Health), View Crafting Menu(Crafting Menu), View Weapon Menu(Weapon Menu), View Crafting Materials(Materials)")
 
@@ -130,12 +145,14 @@ while True:
     elif choice == "equip item" or choice=="use item":
         for item in inventory:
             print(f"{inventory.index(item)}: {item.name}")
-        item_choice = int(input("Which item would you like to use? ")) #removed int
-        itemchoice=inventory.pop(item_choice) #changed inventory.pop to inventory.remove
+        item_choice = int(input("Which item would you like to use? ")) 
+        itemchoice=inventory.pop(item_choice) 
         print(f"you have equiped/used {itemchoice.name}.")
         itemdamage.append(itemchoice.damage)
+        craftingmaterial=treasure.frolls
+        material.append(craftingmaterial)
         weapondamage=list(range(1, itemchoice.damage))
         damage.extend(weapondamage)
-        
-        
+        health=itemchoice.spirit
+        Spirit+=health
         

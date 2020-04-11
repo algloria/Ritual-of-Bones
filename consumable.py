@@ -10,7 +10,7 @@ class Consumable:
 
 consumable_list=[]
 consumable_list.append(Consumable("Beef Jerky", 0, 20, 0, 15))
-consumable_list.append(Consumable("Camp Fire Coffee", 0, 15, 0, 10))
+consumable_list.append(Consumable("Campfire Coffee", 0, 15, 0, 10))
 consumable_list.append(Consumable("Campfire Tea", 0, 10, 0, 8))
 consumable_list.append(Consumable("Roasted Bear Meat", 0, 30, 0, 25 ))
 consumable_list.append(Consumable("Hemp Joint", 0, 15, 0, 10))
