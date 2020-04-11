@@ -30,7 +30,7 @@ elif choice=="Survivalist":
 
 
 while True:
-    choice=input("Roll the Bones? Y/N ")
+    choice=input("Options: Roll the Bones? (Y/N), Craft Items (Craft), View Other Options(Other) ")
     if choice== "Y"or choice =="y":
         roll_1, roll_2 = Dice.roll()
 
@@ -94,7 +94,7 @@ while True:
         for item in inventory:
             print(item.name)
 
-    elif choice =="crafting" or choice=="materials":
+    elif choice =="Materials" or choice=="materials":
             print(sum(material))
 
     
@@ -119,6 +119,10 @@ while True:
                     print(f"You have crafted a {weapon.name}")
                 if x <=0:
                     print("You do not have enough materials to make that item")
+
+    elif choice =="other" or choice =="Other":
+        print("View Inventory(Inventory), View Health(Health), View Crafting Menu(Crafting Menu), View Weapon Menu(Weapon Menu), View Crafting Materials(Materials)")
+
             
 
         
